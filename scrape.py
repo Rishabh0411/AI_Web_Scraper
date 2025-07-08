@@ -1,9 +1,12 @@
 import selenium.webdriver as webdriver
 from selenium.webdriver.chrome.service import Service
 from bs4 import BeautifulSoup
+from urllib.parse import urlparse
 
 def scrape_website(website):
     print("Launching Chrome Browser.....")
+    if not website or not urlparse(website).scheme:
+        raise ValueError("Invalid URL provided. Please include the scheme (http:// or https://).")
 
 
     chrome_driver_path = "./chromedriver"
